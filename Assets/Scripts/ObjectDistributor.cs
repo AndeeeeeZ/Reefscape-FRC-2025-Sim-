@@ -3,10 +3,10 @@ using System.Security.Claims;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class AlgaeDistributor : MonoBehaviour
+public class ObjectDistributor : MonoBehaviour
 {
     [SerializeField]
-    GameObject algaePrefab;
+    GameObject objectPrefab;
 
     [SerializeField]
     Vector2[] locations;
@@ -15,7 +15,7 @@ public class AlgaeDistributor : MonoBehaviour
     {
         foreach (var location in locations)
         {
-            Instantiate(algaePrefab, new Vector3(location.x, location.y, 0), Quaternion.identity); 
+            Instantiate(objectPrefab, new Vector3(location.x, location.y, 0), Quaternion.identity); 
         }
     }
 }
