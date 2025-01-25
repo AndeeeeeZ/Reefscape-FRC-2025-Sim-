@@ -16,7 +16,7 @@ public class Input : MonoBehaviour
     private KeyCode left = KeyCode.A;
     private KeyCode right = KeyCode.D;
     private KeyCode pickUp = KeyCode.Space;
-    private KeyCode interact = KeyCode.J; 
+    private KeyCode interact = KeyCode.Return; 
 
     private bool isUpPressed = false;
     private bool isDownPressed = false;

@@ -17,13 +17,21 @@ public class RobotAction : MonoBehaviour
 
     private List<Collider2D> colliders = new List<Collider2D>();
 
-    private bool haveAlgae, haveCoral; 
+    private bool haveAlgae, haveCoral;
+    private Robot robot; 
+
     private void Start()
     {
         haveAlgae = false;
         haveCoral = false;
         algaeMark.SetActive(haveAlgae); 
         coralMark.SetActive(haveCoral);
+        robot = GetComponent<Robot>();
+
+        if (robot == null)
+        {
+            Debug.LogWarning("Unable to detect robot component"); 
+        }
     }
 
     public void DetectGamePiece()
@@ -56,7 +64,18 @@ public class RobotAction : MonoBehaviour
             GameObject otherObject = colliders[i].gameObject;
             if (otherObject.CompareTag("Processor"))
             {
-                RemoveAlgae();
+                if (RemoveAlgae())
+                { 
+                    otherObject.GetComponent<Processor>().Score(robot.team); 
+                }
+                else
+                {
+                    Debug.LogWarning("Robot not currently holding an algae"); 
+                }
+                
+
+                if (otherObject.GetComponent<Processor>() == null)
+                    Debug.LogWarning("Unable to detect processor component"); 
             }
         }
     }
@@ -94,16 +113,18 @@ public class RobotAction : MonoBehaviour
         }
     }
 
-    public void RemoveAlgae()
+    public bool RemoveAlgae()
     {
         if (haveAlgae)
         {
             haveAlgae = false;
             algaeMark.SetActive(false);
+            return true; 
         }
         else
         {
             Debug.LogWarning("Robot is not currently holding an algae");
+            return false; 
         }
     }
 
