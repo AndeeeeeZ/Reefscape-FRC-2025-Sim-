@@ -49,7 +49,8 @@ public class RobotAction : MonoBehaviour
             }
             else if (otherObject.CompareTag("Coral"))
             {
-                PickUpCoral();
+                PickUpCoral(otherObject);
+
                 if (debug)
                     Debug.Log("Coral detected");
             }
@@ -65,15 +66,13 @@ public class RobotAction : MonoBehaviour
             if (otherObject.CompareTag("Processor"))
             {
                 if (RemoveAlgae())
-                { 
-                    otherObject.GetComponent<Processor>().Score(robot.team); 
+                {
+                    otherObject.GetComponent<Processor>().Score(robot.team);
                 }
                 else
                 {
-                    Debug.LogWarning("Robot not currently holding an algae"); 
-                }
-                
-
+                    Debug.LogWarning("Robot not currently holding an algae");
+                }            
                 if (otherObject.GetComponent<Processor>() == null)
                     Debug.LogWarning("Unable to detect processor component"); 
             }
@@ -97,12 +96,13 @@ public class RobotAction : MonoBehaviour
         }
     }
 
-    public void PickUpCoral()
+    public void PickUpCoral(GameObject coral)
     {
         if (!haveCoral)
         {
             haveCoral = true;
             coralMark.SetActive(true);
+            DestroyImmediate(coral);
 
             if (debug)
                 Debug.Log("Coral picked up");
