@@ -128,6 +128,21 @@ public class RobotAction : MonoBehaviour
         }
     }
 
+    public bool RemoveCoral()
+    {
+        if (haveCoral)
+        {
+            haveCoral = false;
+            coralMark.SetActive(false);
+            return true;
+        }
+        else
+        {
+            Debug.LogWarning("Robot is not currently holding a coral");
+            return false;
+        }
+    }
+
 
     /*
      * TODO: 

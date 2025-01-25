@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8c4c2f6573e2e60408ae5ae1c46ca508
+guid: 29a715cbede6d074fa9150e2777e0deb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -9208054049660740803
-    second: random pixel_0
+      213: -2736679509753845785
+    second: "FRC Logo Algae Texture \uFF08Bigger Ver.)_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: random pixel_0
+      name: "FRC Logo Algae Texture \uFF08Bigger Ver.)_0"
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 481
-        height: 321
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d3bdf51d0ab663080800000000000000
-      internalID: -9208054049660740803
+      spriteID: 7e728054c7c550ad0800000000000000
+      internalID: -2736679509753845785
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      random pixel_0: -9208054049660740803
+      "FRC Logo Algae Texture \uFF08Bigger Ver.)_0": -2736679509753845785
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
