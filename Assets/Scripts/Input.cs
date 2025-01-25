@@ -33,19 +33,40 @@ public class Input : MonoBehaviour
         isDownPressed = UnityEngine.Input.GetKey(down);
         isLeftPressed = UnityEngine.Input.GetKey(left);
         isRightPressed = UnityEngine.Input.GetKey(right);
-        isPickUpPressed = UnityEngine.Input.GetKey(pickUp);
-        isInteractPressed = UnityEngine.Input.GetKey(interact);
 
-        if (isPickUpPressed)
+        PickUpUpdate();
+        InteractUpdate();
+    }
+
+    private void PickUpUpdate()
+    {
+        if(UnityEngine.Input.GetKeyDown(pickUp) && !isPickUpPressed)
         {
+            isPickUpPressed = true;
             robotAction.DetectGamePiece();
 
             if (debug)
-                Debug.Log("Detecting game pieces"); 
+                Debug.Log("Detecting for game pieces");
         }
+        else if (UnityEngine.Input.GetKeyUp(pickUp))
+        {
+            isPickUpPressed = false;
+        }
+    }
 
-        if (isInteractPressed) {
+    private void InteractUpdate()
+    {
+        if (UnityEngine.Input.GetKeyDown(interact) && !isInteractPressed)
+        {
+            isInteractPressed = true;
             robotAction.DetectFieldObject();
+
+            if (debug)
+                Debug.Log("Detecting for field objects");
+        }
+        else if (UnityEngine.Input.GetKeyUp(interact))
+        {
+            isInteractPressed = false;
         }
     }
 
