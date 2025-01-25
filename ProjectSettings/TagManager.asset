@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Algae
   - Coral
+  - Processor
   layers:
   - Default
   - TransparentFX

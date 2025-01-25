@@ -48,22 +48,34 @@ public class RobotAction : MonoBehaviour
         }
     }
 
+    public void DetectFieldObject()
+    {
+        int contactCount = pickUpRange.Overlap(colliders);
+        for (int i = 0; i < contactCount; i++)
+        {
+            GameObject otherObject = colliders[i].gameObject;
+            if (otherObject.CompareTag("Processor"))
+            {
+                RemoveAlgae();
+            }
+        }
+    }
+
     public void PickUpAlgae(GameObject algae)
     {
         if (!haveAlgae)
         {
             haveAlgae = true;
-            algaeMark.SetActive(true); 
+            algaeMark.SetActive(true);
             DestroyImmediate(algae);
 
             if (debug)
                 Debug.Log("Algae picked up & destroyed");
-        } 
+        }
         else
         {
-            Debug.LogWarning("Can't pick up more than 1 algae at a time"); 
+            Debug.LogWarning("Can't pick up more than 1 algae at a time");
         }
-        // TODO: Add an event or something here to delete the picked up game piece
     }
 
     public void PickUpCoral()
@@ -80,8 +92,21 @@ public class RobotAction : MonoBehaviour
         {
             Debug.LogWarning("Can't pick up more than 1 coral at a time");
         }
-        // TODO: Add an event or something here to delete the picked up game piece
     }
+
+    public void RemoveAlgae()
+    {
+        if (haveAlgae)
+        {
+            haveAlgae = false;
+            algaeMark.SetActive(false);
+        }
+        else
+        {
+            Debug.LogWarning("Robot is not currently holding an algae");
+        }
+    }
+
 
     /*
      * TODO: 
